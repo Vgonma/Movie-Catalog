@@ -35,4 +35,19 @@ export default class InvolvementAPI {
       return err;
     }
   };
+
+  getLikes = () => {
+
+  };
+
+  postLike = async (id) => {
+    const res = await fetch(`${this.baseURL}/apps/${this.key}/likes`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ item_id: id }),
+    });
+    return res.status;
+  }
 }
