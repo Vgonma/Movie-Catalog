@@ -25,8 +25,8 @@ const render = (list, parentElement) => {
         </div>
       </div>
       <div class="card-buttons-container">
-        <button class="card-button">Comments</button>
-        <button class="card-button">Reservation</button>
+        <button type="button" class="card-button">Comments</button>
+        <button type="button" class="card-button">Reservation</button>
       </div>    
     </li>`;
   });
