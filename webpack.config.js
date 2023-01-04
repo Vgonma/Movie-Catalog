@@ -8,6 +8,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Output Management',
       template: './src/index.html',
+      favicon: './src/img/clapperboard.png',
     }),
   ],
   output: {
@@ -24,6 +25,10 @@ module.exports = {
       {
         test: /\.(jpg|png|svg|gif)$/,
         type: 'asset/resource',
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
       },
     ],
   },
