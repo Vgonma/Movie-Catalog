@@ -1,4 +1,5 @@
 import './style.css';
+import './index.html';
 import TvmazeConnection from './modules/TvmazeConnection.js';
 import Render from './modules/Render.js';
 import InvolvementAPI from './modules/InvolvmentAPI.js';
@@ -31,8 +32,8 @@ window.addEventListener('load', async () => {
         comments.forEach((comment) => {
           const com = document.createElement('p');
           com.classList.add('comment');
-          com.innerHTML = `${comment.creation_date}<br>${comment.username}: 
-          ${comment.comment}`;
+          com.innerHTML = `<span class="comment-user">${comment.username}</span><span class="comment-date">${comment.creation_date}</span>
+          <span class="comment-text">${comment.comment}</span>`;
           commentSection.appendChild(com);
         });
       } else {
@@ -43,8 +44,8 @@ window.addEventListener('load', async () => {
       popUp.innerHTML = `
       <section class="info-container scroll">
             <img class="cross" src="https://cdn-icons-png.flaticon.com/512/1828/1828774.png" alt="">
-            <img class="meal-preview" src="${movieData.image.original}" alt="">
-            <h2 class="meal-name">${movieData.name}</h2>
+            <img class="movie-preview" src="${movieData.image.original}" alt="">
+            <h2 class="movie-name">${movieData.name}</h2>
             <ul class="list-ingredients">
                 <li class="ingredient">Language: ${movieData.language}</li>
                 <li class="ingredient">Status: ${movieData.status}</li>
@@ -68,13 +69,14 @@ window.addEventListener('load', async () => {
       body.classList.add('no-scroll');
 
       const submitComment = document.querySelector('.submit-comment');
-      submitComment.addEventListener('click', (e) => {
+      submitComment.addEventListener('submit', (e) => {
         e.preventDefault();
-        involvementConnection.postComment(
-          button.parentElement.parentElement.id,
-          document.querySelector('.input-name').value,
-          document.querySelector('.comment-area').value,
-        );
+        const movieId = button.parentElement.parentElement.id;
+        const name = document.querySelector('.input-name');
+        const comment = document.querySelector('.comment-area');
+        involvementConnection.postComment(movieId, name.value, comment.value);
+        name.value = '';
+        comment.value = '';
       });
     });
   });

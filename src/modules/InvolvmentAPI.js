@@ -16,17 +16,17 @@ export default class InvolvementAPI {
     }
   };
 
-  postComment = async (itemId, username, comment) => {
+  postComment = async (id, name, text) => {
     try {
       const res = await fetch(`${this.baseURL}/apps/${this.key}/comments`, {
         method: 'POST',
         headers: {
-          'content-type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          itemId,
-          username,
-          comment,
+          item_id: id,
+          username: name,
+          comment: text,
         }),
       });
       const data = await res.json();
