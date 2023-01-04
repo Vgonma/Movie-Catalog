@@ -123,6 +123,7 @@
   align-items: center;
   gap: 16px;
   box-shadow: 10px 20px 15px #222;
+  border-radius: 20px;
 }
 
 .cross {
@@ -189,4 +190,12 @@
 .submit-comment {
   max-width: 100px;
   height: 30px;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
