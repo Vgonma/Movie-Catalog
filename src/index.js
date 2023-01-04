@@ -1,7 +1,7 @@
 import './style.css';
 import TvmazeConnection from './modules/TvmazeConnection.js';
 import Render from './modules/Render.js';
-import InvolvementAPI from './modules/InvolvmentAPI';
+import InvolvementAPI from './modules/InvolvmentAPI.js';
 
 const listElement = document.getElementById('items-list');
 const tvMazeConnection = new TvmazeConnection();
@@ -40,7 +40,6 @@ window.addEventListener('load', async () => {
         commentSection.innerHTML = `
         <h3 class="comment-title">Comments(0)</h3>`;
       }
-      console.log(comments);
       popUp.innerHTML = `
       <section class="info-container scroll">
             <img class="cross" src="https://cdn-icons-png.flaticon.com/512/1828/1828774.png" alt="">
