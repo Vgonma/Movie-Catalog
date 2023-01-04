@@ -1,9 +1,11 @@
 import './style.css';
+import filledHeartIcon from './img/filled_heart_icon.png';
 import TvmazeConnection from './modules/TvmazeConnection.js';
 import Render from './modules/Render.js';
 import InvolvementAPI from './modules/InvolvmentAPI.js';
 
 const listElement = document.getElementById('items-list');
+const itemsContainer = document.querySelector('.items-container');
 const tvMazeConnection = new TvmazeConnection();
 const involvementConnection = new InvolvementAPI();
 const render = new Render(listElement);
@@ -78,4 +80,18 @@ window.addEventListener('load', async () => {
       });
     });
   });
+});
+
+itemsContainer.addEventListener('click', async (e) => {
+  const { target } = e;
+  const classList = [...target.classList];
+  if (classList.includes('card-heart')) {
+    const { id } = target.dataset;
+    target.classList.add('heart-beat');
+    const resStatus = await involvementConnection.postLike(id);
+    if (resStatus === 201) {
+      target.src = filledHeartIcon;
+    }
+    target.classList.remove('heart-beat');
+  }
 });

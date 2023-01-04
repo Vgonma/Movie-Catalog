@@ -14,7 +14,7 @@ export default class Render {
         <div class="card-info-container">
           <p class="card-title">${item.show.name}</p>
           <div class="card-likes-container">
-            <img class="card-heart" src=${emptyHeartIcon}>
+            <img class="card-heart" src=${emptyHeartIcon} data-id=${item.show.externals.thetvdb}>
             <p class="card-likes-text">5 likes</p>
           </div>
         </div>
