@@ -9,7 +9,7 @@ export default class Render {
     let listItems = '';
     list.forEach((item) => {
       listItems += `\
-      <li id="${item.show.id}" class="card">\
+      <li id="${item.show.externals.thetvdb}" class="card">\
         <img class="card-img" src=${item.show.image.medium}>
         <div class="card-info-container">
           <p class="card-title">${item.show.name}</p>
