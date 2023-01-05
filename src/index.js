@@ -7,19 +7,6 @@ import InvolvementAPI from './modules/InvolvmentAPI.js';
 import createCommentsDOM from './CreateCommentDOM.js';
 import CardsCounter from './modules/CardsCounter.js';
 
-const dummyComments = [
-  {
-      "comment": "This is nice!",
-      "creation_date": "2021-01-10",
-      "username": "John"
-  },
-  {
-      "comment": "Great content!",
-      "creation_date": "2021-02-10",
-      "username": "Jane"
-  }
-];
-
 const listElement = document.getElementById('items-list');
 const itemsContainer = document.querySelector('.items-container');
 const tvMazeConnection = new TvmazeConnection();
@@ -46,11 +33,6 @@ window.addEventListener('load', async () => {
         button.parentElement.parentElement.id,
       );
       let commentSection = createCommentsDOM(comments);
-
-      // ====================Remove========================
-      // let commentSection = createCommentsDOM(dummyComments);
-      // ==================================================
-
       popUp.innerHTML = `
       <section class="info-container scroll">
             <img class="cross" src="https://cdn-icons-png.flaticon.com/512/1828/1828774.png" alt="">
