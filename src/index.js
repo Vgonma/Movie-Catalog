@@ -4,17 +4,21 @@ import filledHeartIcon from './img/filled_heart_icon.png';
 import TvmazeConnection from './modules/TvmazeConnection.js';
 import Render from './modules/Render.js';
 import InvolvementAPI from './modules/InvolvmentAPI.js';
+import CardsCounter from './modules/CardsCounter.js';
 
 const listElement = document.getElementById('items-list');
 const itemsContainer = document.querySelector('.items-container');
 const tvMazeConnection = new TvmazeConnection();
 const involvementConnection = new InvolvementAPI();
 const render = new Render(listElement);
+const cardsCounter = new CardsCounter();
 
 window.addEventListener('load', async () => {
   const itemsToRender = await tvMazeConnection.getMoviesByTopic('planet');
   const likes = await involvementConnection.getLikes();
   render.show(itemsToRender, likes);
+  const cardsCount = cardsCounter.getCount(document);
+  document.querySelector('.movies').textContent = `(${cardsCount})`;
 
   const commentButtons = document.querySelectorAll('.card-button');
   commentButtons.forEach((button) => {
