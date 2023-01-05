@@ -113,7 +113,7 @@ To register a comment:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Make ower own API**
+- [ ] **Make our own API**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -131,6 +131,6 @@ Feel free to check the [issues page](https://github.com/Juank628/gallery/issues)
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project, please give us an star
+If you like this project, please give us a star
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
