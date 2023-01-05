@@ -4,6 +4,7 @@ import filledHeartIcon from './img/filled_heart_icon.png';
 import TvmazeConnection from './modules/TvmazeConnection.js';
 import Render from './modules/Render.js';
 import InvolvementAPI from './modules/InvolvmentAPI.js';
+import commentCounter from './modules/commentCounter.js';
 import CardsCounter from './modules/CardsCounter.js';
 
 const listElement = document.getElementById('items-list');
@@ -35,14 +36,16 @@ window.addEventListener('load', async () => {
       if (comments.length > 0) {
         commentSection.classList.add('list-comments');
         commentSection.innerHTML = `
-        <h3 class="comment-title">Comments(${comments.length})</h3>`;
+        <h3 class="comment-title">Comments(Counting...)</h3>
+        <div class="comments-container"></div>`;
         comments.forEach((comment) => {
           const com = document.createElement('p');
           com.classList.add('comment');
           com.innerHTML = `<span class="comment-user">${comment.username}</span><span class="comment-date">${comment.creation_date}</span>
           <span class="comment-text">${comment.comment}</span>`;
-          commentSection.appendChild(com);
+          commentSection.children[1].appendChild(com);
         });
+        commentSection.children[0].textContent = `Comments(${commentCounter(commentSection.children[1])})`;
       } else {
         commentSection.classList.add('list-comments');
         commentSection.innerHTML = `
@@ -75,7 +78,7 @@ window.addEventListener('load', async () => {
       });
       body.classList.add('no-scroll');
 
-      const submitComment = document.querySelector('.submit-comment');
+      const submitComment = document.querySelector('.add-comment-form');
       submitComment.addEventListener('submit', (e) => {
         e.preventDefault();
         const movieId = button.parentElement.parentElement.id;
