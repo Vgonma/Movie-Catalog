@@ -94,6 +94,9 @@ itemsContainer.addEventListener('click', async (e) => {
     const resStatus = await involvementConnection.postLike(id);
     if (resStatus === 201) {
       target.src = filledHeartIcon;
+      const likesCounter = target.nextElementSibling.firstElementChild;
+      const newCount = parseInt(likesCounter.textContent, 10) + 1;
+      likesCounter.textContent = newCount;
     }
     target.classList.remove('heart-beat');
   }

@@ -20,7 +20,10 @@ export default class Render {
           <p class="card-title">${item.show.name}</p>
           <div class="card-likes-container">
             <img class="card-heart" src=${emptyHeartIcon} data-id=${item.show.externals.thetvdb}>
-            <p class="card-likes-text">${this.findLikes(item.show.externals.thetvdb, likes)} likes</p>
+            <p class="card-likes-text">\
+              <span>${this.findLikes(item.show.externals.thetvdb, likes)}</span>\
+              likes\
+            </p>
           </div>
         </div>
         <div class="card-buttons-container">
