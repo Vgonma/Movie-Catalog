@@ -163,6 +163,14 @@
   align-self: center;
 }
 
+.comments-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 .comment {
   display: grid;
   grid-template-columns: 1fr 1fr;
