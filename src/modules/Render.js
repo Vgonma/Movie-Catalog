@@ -5,7 +5,12 @@ export default class Render {
     this.parentElement = parentElement;
   }
 
-  show = (list) => {
+  findLikes = (id, likes) => {
+    const item = likes.find((movie) => parseInt(movie.item_id, 10) === id);
+    return item.likes;
+  };
+
+  show = (list, likes) => {
     let listItems = '';
     list.forEach((item) => {
       listItems += `\
@@ -15,7 +20,10 @@ export default class Render {
           <p class="card-title">${item.show.name}</p>
           <div class="card-likes-container">
             <img class="card-heart" src=${emptyHeartIcon} data-id=${item.show.externals.thetvdb}>
-            <p class="card-likes-text">5 likes</p>
+            <p class="card-likes-text">\
+              <span>${this.findLikes(item.show.externals.thetvdb, likes)}</span>\
+              likes\
+            </p>
           </div>
         </div>
         <div class="card-buttons-container">
