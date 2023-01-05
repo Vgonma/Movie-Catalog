@@ -17,7 +17,6 @@ export default function createCommentsDOM(comments) {
     commentSection.children[0].textContent = `Comments(${commentCounter(
       commentSection.children[1],
     )})`;
-    console.log(typeof(commentSection.children[1]));
   } else {
     commentSection.innerHTML = `
         <h3 class="comment-title">Comments(0)</h3>
