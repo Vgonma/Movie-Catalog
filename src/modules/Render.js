@@ -7,7 +7,8 @@ export default class Render {
 
   findLikes = (id, likes) => {
     const item = likes.find((movie) => parseInt(movie.item_id, 10) === id);
-    return item.likes;
+    if (item) return item.likes;
+    return 0;
   };
 
   show = (list, likes) => {
