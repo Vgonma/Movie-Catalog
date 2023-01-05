@@ -13,7 +13,8 @@ const render = new Render(listElement);
 
 window.addEventListener('load', async () => {
   const itemsToRender = await tvMazeConnection.getMoviesByTopic('planet');
-  render.show(itemsToRender);
+  const likes = await involvementConnection.getLikes();
+  render.show(itemsToRender, likes);
 
   const commentButtons = document.querySelectorAll('.card-button');
   commentButtons.forEach((button) => {
