@@ -4,7 +4,7 @@ import filledHeartIcon from './img/filled_heart_icon.png';
 import TvmazeConnection from './modules/TvmazeConnection.js';
 import Render from './modules/Render.js';
 import InvolvementAPI from './modules/InvolvmentAPI.js';
-import commentCounter from './modules/commentCounter.js';
+import createCommentsDOM from './CreateCommentDOM.js';
 import CardsCounter from './modules/CardsCounter.js';
 
 const listElement = document.getElementById('items-list');
@@ -29,28 +29,10 @@ window.addEventListener('load', async () => {
       const movieData = await tvMazeConnection.getSingleMovie(
         button.parentElement.parentElement.id,
       );
-      const comments = await involvementConnection.getComments(
+      let comments = await involvementConnection.getComments(
         button.parentElement.parentElement.id,
       );
-      const commentSection = document.createElement('div');
-      if (comments.length > 0) {
-        commentSection.classList.add('list-comments');
-        commentSection.innerHTML = `
-        <h3 class="comment-title">Comments(Counting...)</h3>
-        <div class="comments-container"></div>`;
-        comments.forEach((comment) => {
-          const com = document.createElement('p');
-          com.classList.add('comment');
-          com.innerHTML = `<span class="comment-user">${comment.username}</span><span class="comment-date">${comment.creation_date}</span>
-          <span class="comment-text">${comment.comment}</span>`;
-          commentSection.children[1].appendChild(com);
-        });
-        commentSection.children[0].textContent = `Comments(${commentCounter(commentSection.children[1])})`;
-      } else {
-        commentSection.classList.add('list-comments');
-        commentSection.innerHTML = `
-        <h3 class="comment-title">Comments(0)</h3>`;
-      }
+      let commentSection = createCommentsDOM(comments);
       popUp.innerHTML = `
       <section class="info-container scroll">
             <img class="cross" src="https://cdn-icons-png.flaticon.com/512/1828/1828774.png" alt="">
@@ -61,7 +43,7 @@ window.addEventListener('load', async () => {
                 <li class="ingredient">Status: ${movieData.status}</li>
                 <li class="ingredient">Release: ${movieData.premiered}</li>
                 <li class="ingredient"><a href="${movieData.officialSite}" target="blank">Official Site</a></li>
-            </ul>${commentSection.innerHTML}
+            </ul>
             <form class="add-comment-form">
                 <h3 class="add-comment-title" >Add a comment</h3>
                 <input class="input-name" type="text" placeholder="Name" required>
@@ -69,6 +51,7 @@ window.addEventListener('load', async () => {
                 <button class="submit-comment">Comment</button>
             </form>
         </section>`;
+      popUp.children[0].insertBefore(commentSection, popUp.children[0].children[4]);
       const body = document.querySelector('body');
       body.appendChild(popUp);
       const closeCross = document.querySelector('.cross');
@@ -79,14 +62,21 @@ window.addEventListener('load', async () => {
       body.classList.add('no-scroll');
 
       const submitComment = document.querySelector('.add-comment-form');
-      submitComment.addEventListener('submit', (e) => {
+      submitComment.addEventListener('submit', async (e) => {
         e.preventDefault();
         const movieId = button.parentElement.parentElement.id;
         const name = document.querySelector('.input-name');
         const comment = document.querySelector('.comment-area');
-        involvementConnection.postComment(movieId, name.value, comment.value);
+        await involvementConnection.postComment(movieId, name.value, comment.value);
         name.value = '';
         comment.value = '';
+
+        comments = await involvementConnection.getComments(
+          button.parentElement.parentElement.id,
+        );
+        commentSection = createCommentsDOM(comments);
+        const oldComments = document.querySelector('.list-comments');
+        oldComments.replaceWith(commentSection);
       });
     });
   });
