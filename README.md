@@ -10,6 +10,7 @@
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [🚀 Live Demo ](#-live-demo-)
+  - [Video Description ](#video-description-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -50,7 +51,13 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-caming soon...
+Click [here](https://juank628.github.io/gallery/) for live demo
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Video Description <a name="video-demo"></a>
+
+Click [here](https://drive.google.com/file/d/1wfuwYVjlQKQPJhl-V0b_3ytjZC3UtWE4/view?usp=sharing) for video description
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
