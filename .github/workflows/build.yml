@@ -1,0 +1,18 @@
+name: Build dist
+
+on: page_build
+
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  Build:
+    name: Build Dist
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Run build script
+        run: npm run build
