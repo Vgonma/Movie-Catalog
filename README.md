@@ -51,7 +51,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Click [here](https://juank628.github.io/gallery/) for live demo
+Click [here](https://juank628.github.io/gallery/dist) for live demo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
